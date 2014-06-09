@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNet", "SharpNet\SharpNet.csproj", "{207F35AF-148E-42AC-AD96-03D4FCEC88EC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{83FE44CD-26FD-4E95-93A3-6FB4D7CF32F6}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNet.Test", "SharpNet.Test\SharpNet.Test.csproj", "{4AC40B9C-228D-485F-9D7D-4042FA27D884}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{E25BFC03-0D46-4C2A-95B8-710FEB501830}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sharpy", "sharpy\sharpy.csproj", "{150FFA4A-B6D9-4642-8AAC-C0469E1C6D27}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{207F35AF-148E-42AC-AD96-03D4FCEC88EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{207F35AF-148E-42AC-AD96-03D4FCEC88EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{207F35AF-148E-42AC-AD96-03D4FCEC88EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{207F35AF-148E-42AC-AD96-03D4FCEC88EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AC40B9C-228D-485F-9D7D-4042FA27D884}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AC40B9C-228D-485F-9D7D-4042FA27D884}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AC40B9C-228D-485F-9D7D-4042FA27D884}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AC40B9C-228D-485F-9D7D-4042FA27D884}.Release|Any CPU.Build.0 = Release|Any CPU
+		{150FFA4A-B6D9-4642-8AAC-C0469E1C6D27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{150FFA4A-B6D9-4642-8AAC-C0469E1C6D27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{150FFA4A-B6D9-4642-8AAC-C0469E1C6D27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{150FFA4A-B6D9-4642-8AAC-C0469E1C6D27}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{150FFA4A-B6D9-4642-8AAC-C0469E1C6D27} = {E25BFC03-0D46-4C2A-95B8-710FEB501830}
+	EndGlobalSection
+EndGlobal

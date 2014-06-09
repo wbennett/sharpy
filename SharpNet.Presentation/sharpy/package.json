@@ -1,0 +1,18 @@
+{
+  "name": "sharpy",
+  "version": "0.0.1",
+  "author": "William Bennett",
+  "dependencies": {
+    "jake": "0.5.x",
+    "passport": "0.1.x",
+    "passport-twitter": "0.1.x",
+    "passport-facebook": "0.1.x",
+    "passport-yammer": "0.1.x",
+    "bcrypt": "0.7.x",
+    "node-rest-client": "0.8.x"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": "0.8.x"
+  }
+}

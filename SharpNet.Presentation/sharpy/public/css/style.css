@@ -1,0 +1,109 @@
+body {
+  background: url('../img/whitey.png');
+}
+body.application {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+code {
+  white-space: pre;
+}
+
+.navbar-fixed-top {
+  box-shadow: 0px 0px 3px #000;
+  border-bottom: 1px solid #999;
+}
+
+.geddy-welcome-box {
+  text-align: center;
+  background-color: rgba(200, 200, 200, .5);
+  box-shadow: 0px 0px 3px #bababa;
+  border: 1px solid #EDEDED;
+}
+
+.geddy-welcome-box h1 {
+  line-height: 1.25;
+  margin-bottom: 20px;
+}
+
+.geddy-welcome-box p {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.geddy-welcome-box .btn-large {
+  margin-top: 20px;
+}
+
+.list-item {
+  margin-bottom: 20px;
+}
+
+.list-item div {
+  background: white;
+  border-bottom: 2px solid #ccc;
+}
+
+.list-item div > * {
+  padding: 20px;
+}
+
+.list-item div h3 i {
+  margin: 5px;
+}
+
+#flash-container {
+  margin-top: 48px;
+}
+
+@media (max-width:480px) {
+  .hero-unit .pull-right {
+    float: none;
+    margin-top: 10px;
+  }
+}
+#console {
+    height: 400px;
+    width: 750px;
+    position:relative;
+    background-color: black;
+    border: 2px solid #CCC;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+.jqconsole {
+    padding: 10px;
+    padding-bottom: 10px;
+}
+.jqconsole-cursor {
+    background-color: #999;
+}
+.jqconsole-blurred .jqconsole-cursor {
+    background-color: #666;
+}
+.jqconsole-prompt {
+    color: #0d0;
+}
+.jqconsole-old-prompt {
+    color: #0b0;
+    font-weight: normal;
+}
+.jqconsole-input {
+    color: #dd0;
+}
+.jqconsole-old-input {
+    color: #bb0;
+    font-weight: normal;
+}
+.brace {
+    color: #00FFFF;
+}
+.paran {
+    color: #FF00FF;
+}
+.bracket {
+    color: #FFFF00;
+}
+.jqconsole-composition {
+    background-color: red;
+}

@@ -1,0 +1,19 @@
+<%= partial('layout_header'); %>
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="i-bar"><i class="icon-chevron-down icon-white"></i></span>
+          </a>
+          <%- linkTo('sharpy', mainsPath, {class: 'brand'}) %>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <%- displayFlash(flash); %>
+      <%- render(); %>
+    </div>
+  </body>
+<%= partial('layout_footer'); %>
+
