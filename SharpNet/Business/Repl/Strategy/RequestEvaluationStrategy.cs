@@ -102,7 +102,8 @@ namespace SharpNet.Business.Repl.Strategy
             }
 
             resp.StandardOut = flushStandardOut(context.Session,context.Id);
-            resp.StandardError = flushStandardError(context.Session,context.Id);
+            if(resp.StandardError == null)
+                resp.StandardError = flushStandardError(context.Session,context.Id);
 
             if (ResponseHandler == null)
                 return;
