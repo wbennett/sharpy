@@ -412,7 +412,7 @@ Licensed under the MIT license
         key_code = parseInt(key_code, 10);
       }
       if (!((0 < key_code && key_code < 256)) || isNaN(key_code)) {
-        throw new Error('Key code must be a number between 0 and 256 exclusive.');
+        throw new Error('Key codes must be a number between 0 and 256 exclusive.');
       }
       return key_code;
     };

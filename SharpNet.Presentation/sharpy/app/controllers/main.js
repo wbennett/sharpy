@@ -31,7 +31,7 @@ var Main = function () {
       if (user) {
         data.user = user;
         data.authType = authTypes[self.session.get('authType')].name;
-        self.redirect('/develops');
+        self.redirect('/codes');
       }else {
           self.respond(data, {
               format: 'html'

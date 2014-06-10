@@ -17,7 +17,7 @@
 */
 
 var config = {
-  appName: 'Geddy App (development)'
+  appName: 'Sharpy the C# REPL'
 , detailedErrors: true
 , debug: true
 , hostname: null

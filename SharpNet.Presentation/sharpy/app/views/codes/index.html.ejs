@@ -1,0 +1,109 @@
+<div class="hero-unit">
+    <div id="console"></div>
+    <script src="js/jqconsole.js"></script>
+
+    <script>
+        $(function() {
+            // Creating the console.
+            var header = 'Welcome to sharpy! Type :help for assistance.\n' +
+                    'Start coding!\n';
+            window.jqconsole = $('#console').jqconsole(header, 'C#> ');
+
+            // Abort prompt on Ctrl+Z.
+            jqconsole.RegisterShortcut('Z', function () {
+                jqconsole.AbortPrompt();
+                handler();
+            });
+            // Move to line start Ctrl+A.
+            jqconsole.RegisterShortcut('A', function () {
+                jqconsole.MoveToStart();
+                handler();
+            });
+            // Move to line end Ctrl+E.
+            jqconsole.RegisterShortcut('E', function () {
+                jqconsole.MoveToEnd();
+                handler();
+            });
+            //Reset
+            jqconsole.RegisterShortcut('R', function () {
+                jqconsole.Reset();
+                handler();
+            });
+
+            jqconsole.RegisterMatching('{', '}', 'brace');
+            jqconsole.RegisterMatching('(', ')', 'paran');
+            jqconsole.RegisterMatching('[', ']', 'bracket');
+
+            // Handle a command.
+            var handler = function (command) {
+                if (command) {
+                    if(command.indexOf(":help") > -1)
+                    {
+                        jqconsole.Write(
+'-----------------------------------\n \
+Sharpy the web based C-Sharp (R)ead (E)valuate (P)rint (L)oop.\n\
+\n\
+Fork me at http://github.com/wbennett/sharpy \n\
+\n\
+All C-Sharp language features are available. There are some limitations.\n\
+1. Sandbox Environment: There are a limited set of libraries available (see source for collection).\n\
+2. Operations that take longer than 30 seconds will be terminated.\n\
+3. No file system to operate on, everything will be done in memory.\n\
+\n\
+Usage:\n\
+\n\
+:help        Prints this message.\n\
+\n\
+Ctrl + R     Resets the repl.\n\
+\n\
+Ctrl + Z     Will abort the prompt.\n\
+\n\
+Ctrl + A     Move to start of line.\n\
+\n\
+Ctrl + E     Move to end of line.\n\
+');
+                    }else{
+                        var rqst = {
+                            "Code": {
+                                "Value": command
+                            }
+                        }
+                        $.ajax({
+                            type: "POST",
+                            url: "/eval",
+                            data: JSON.stringify(rqst),
+                            contentType: "application/json",
+                            dataType: "json",
+                            async: false
+                        })
+                                .done(function (data) {
+                                    console.log(data);
+                                    if (data.StandardError) {
+                                        jqconsole.Write('Oh Snap!> ' + data.StandardError + "\n",
+                                                'jqconsole-error');
+                                    } else if (data.StandardOut) {
+                                        jqconsole.Write('==> ' + data.StandardOut + "\n");
+                                    } else if (data.ReturnValue) {
+                                        jqconsole.Write('==> ' + data.ReturnValue + "\n");
+                                    }
+                                });
+
+                    }
+                }
+                jqconsole.Prompt(true, handler, function (command) {
+                    // Continue line if can't compile the command.
+                    //if there are more open the close return 1
+                    var leftMatch = command.match(/[\[\{\(]/g);
+                    var rightMatch = command.match(/[\]\}\(]/g);
+                    var open = leftMatch == null ? 0 :
+                            leftMatch.length;
+                    var close = rightMatch == null ? 0 :
+                            rightMatch.length;
+
+                    return open > close
+                });
+            };
+            handler();
+        });
+    </script>
+</div>

@@ -45,6 +45,6 @@ router.get('/logout').to('Main.logout');
 router.post('/auth/local').to('Auth.local');
 router.get('/users/create').to('Users.add');
 router.post('/users/add').to('Users.create');
-router.post('/eval').to('Develops.eval');
-router.get('/develops').to('Develops.index');
+router.post('/eval').to('Code.eval');
+router.get('/codes').to('Code.index');
 exports.router = router;

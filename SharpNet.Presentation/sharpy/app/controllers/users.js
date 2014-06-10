@@ -68,15 +68,12 @@ var Users = function () {
         self.respondWith(user);
       }
       else {
-          client.post(env.sharpNestBaseUri + "activate?format=json",
+          client.post(env.sharpNetBaseUri + "activate?format=json",
               activateSessionArgs,
               function(data,response){
-                console.log(data);
-                var d = JSON.parse(data);
-                user.sessionId = d.SessionId;
-                  console.log(user);
-//                user.sessionId = JSON.parse(data).SessionId;
-                if (user.isValid()) {
+                  console.log(data);
+                  var d = JSON.parse(data);
+                  if (user.isValid()) {
                     user.password = generateHash(user.password);
 
                     if (EMAIL_ACTIVATION) {
@@ -96,6 +93,9 @@ var Users = function () {
                     if (err) {
                         throw err;
                     }
+
+                    self.session.set('sessionId',
+                        d.SessionId);
 
                     if (EMAIL_ACTIVATION) {
                         activationUrl = geddy.config.fullHostname + '/users/activate?token=' +
@@ -131,10 +131,10 @@ var Users = function () {
                     }
                     });
 
-                }
-                else {
-                     self.respondWith(user, {status: err});
-                }
+                  }
+                  else {
+                       self.respondWith(user, {status: err});
+                  }
           });
       }
     });
@@ -151,7 +151,7 @@ var Users = function () {
       }
       if (!user) {
         throw new geddy.errors.NotFoundError(
-            'Sorry, couldn\'t find the user with that activation code.');
+            'Sorry, couldn\'t find the user with that activation codes.');
       }
       user.activatedAt = new Date();
       user.save(function (err) {

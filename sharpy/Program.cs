@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using CommandLine;
 using CommandLine.Text;
@@ -37,13 +38,9 @@ namespace sharpy
                 return help;
             }
         }
-        static void Main(string[] args)
+
+        static void StartWebServer(Options options)
         {
-            var options = new Options();
-
-            if (!CommandLine.Parser.Default.ParseArgumentsStrict(args, options))
-                return;
-
             var appHost = new AppHost();
             appHost.Init();
             Console.WriteLine(string.Format(
@@ -51,8 +48,50 @@ namespace sharpy
                 options.Host
                 ));
             appHost.Start(options.Host);
+            
+        }
+
+        static void Main(string[] args)
+        {
+            var options = new Options();
+
+            //handle the command line input
+            if (!CommandLine.Parser.Default.ParseArgumentsStrict(args, options))
+                return;
+
+            //create a cancellation token source to send messages
+            var tokenSource = new CancellationTokenSource();
+            var tsk = Task.Factory.StartNew(
+                () =>
+                {
+
+                    //run until we are told to stop
+                    while (!tokenSource.Token.IsCancellationRequested)
+                    {
+                        try
+                        {
+                            //start the web server
+                            StartWebServer(options);
+                            //wait until we are told to stop
+                            while (!tokenSource.Token.IsCancellationRequested)
+                            {
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            //log the error and restart the server
+                            Console.Error.WriteLine("{0}{1}{1}{2}{1}", 
+                                e.Message, 
+                                Environment.NewLine, 
+                                e.StackTrace); 
+                        }
+                    }
+                },tokenSource.Token);
+            //run until we cancel
             Console.WriteLine("Press any key to quit.");
             Console.ReadKey();
+            tokenSource.Cancel();
+            tsk.Wait();
         }
     }
 }

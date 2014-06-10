@@ -1,7 +1,11 @@
 ﻿using System; using System.Dynamic;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using Ninject;
+using Roslyn.Scripting;
 using SharpNet.Business.Repl.Abstract;
+using SharpNet.Business.Repl.Provider;
 using SharpNet.Service.Request;
 using SharpNet.Service.Response;
 
@@ -23,6 +27,23 @@ namespace SharpNet.Business.Repl.Strategy
 
         private EvaluateRequest Request { get; set; }
 
+        private string flushStandardOut(Session session,Guid id)
+        {
+            return session
+                .Execute<string>(
+                    string.Format("SharpNet.System.ConsoleBuffer.Instance(\"{0}\").FlushOut();",
+                        id));
+        }
+
+        private string flushStandardError(Session session,Guid id)
+        {
+           return session 
+                    .Execute<string>(
+                        string.Format("SharpNet.System.ConsoleBuffer.Instance(\"{0}\").FlushError();",
+                            id)
+                    );
+        }
+
         public void Execute()
         {
             if(Request == null)
@@ -40,28 +61,48 @@ namespace SharpNet.Business.Repl.Strategy
             resp.Result = default(object);
             resp.StandardError = default(string);
             resp.StandardOut = default(string);
+            Exception threadException = null;
             try
             {
+                context.Session.Engine.BaseDirectory = AppDomain.CurrentDomain.BaseDirectory;
                 //execute the code
-                resp.Result = context.Session.Execute(this.Request.Code.Value);
-                //grab the standard out
-                resp.StandardOut = context.Session
-                    .Execute<string>(
-                    string.Format("SharpNet.System.ConsoleBuffer.Instance(\"{0}\").FlushOut();",
-                          context.Id)
-                    );
-                //grab the standard error
-                resp.StandardError = context.Session
-                    .Execute<string>(
-                        string.Format("SharpNet.System.ConsoleBuffer.Instance(\"{0}\").FlushError();",
-                            context.Id)
-                    );
+                var cts = new CancellationTokenSource();
+                var task = Task.Factory.StartNew(state =>
+                {
+                    var token = (CancellationToken) state;
+                    try
+                    {
+                        resp.Result = context.Session.Execute(this.Request.Code.Value);
 
+                    }
+                    catch (Exception e)
+                    {
+                        threadException = e;
+                        throw e;
+                    }
+                    token.ThrowIfCancellationRequested();
+                }, cts.Token);
+                //wait maximum amount of time before blowing up
+                if (!task.Wait((int) Container.GetInstance().Kernel.Get<SandboxPropertyProvider>()
+                    .MaximumExecutionTimeSpan.TotalMilliseconds, cts.Token))
+                {
+                    cts.Cancel();
+                    //clean up...
+                    throw new InvalidOperationException("Command took too long to execute.");
+                }
             }
-            catch (Exception e)
+            catch (InvalidOperationException e)
             {
                 resp.StandardError = e.Message;
             }
+            catch (Exception e)
+            {
+                resp.StandardError = threadException == null ? 
+                    e.Message : threadException.Message;
+            }
+
+            resp.StandardOut = flushStandardOut(context.Session,context.Id);
+            resp.StandardError = flushStandardError(context.Session,context.Id);
 
             if (ResponseHandler == null)
                 return;

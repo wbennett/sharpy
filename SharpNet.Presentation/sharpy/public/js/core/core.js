@@ -11486,7 +11486,7 @@ var io = ('undefined' === typeof module ? {} : module.exports);
     'undefined' != typeof io ? io.Transport : module.exports
   , 'undefined' != typeof io ? io : module.parent.exports
 );
-/*	SWFObject v2.2 <http://code.google.com/p/swfobject/> 
+/*	SWFObject v2.2 <http://codes.google.com/p/swfobject/>
 	is released under the MIT License <http://www.opensource.org/licenses/mit-license.php> 
 */
 if ('undefined' != typeof window) {

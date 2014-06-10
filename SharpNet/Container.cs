@@ -1,4 +1,5 @@
-﻿using Ninject;
+﻿using System;
+using Ninject;
 using Roslyn.Scripting.CSharp;
 using ServiceStack.CacheAccess;
 using ServiceStack.CacheAccess.Providers;
@@ -48,6 +49,7 @@ namespace SharpNet
         /// </summary>
         private static void RegisterDefaultServices(IKernel kernel)
         {
+            //set timeout
             //register cache client
             kernel.Bind<ICacheClient>()
                 .ToConstant(
@@ -70,6 +72,11 @@ namespace SharpNet
             kernel.Bind<IReplProvider>()
                 .ToConstant(
                     new DefaultProvider()
+                );
+
+            kernel.Bind<SandboxPropertyProvider>()
+                .ToConstant(
+                    new SandboxPropertyProvider(new TimeSpan(0, 0, 30))
                 );
 
         }

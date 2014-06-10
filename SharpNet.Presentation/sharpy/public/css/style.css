@@ -74,6 +74,12 @@ code {
 .jqconsole {
     padding: 10px;
     padding-bottom: 10px;
+    background-color: #3b3b3b;
+    color: #ffffff;
+}
+
+.jqconsole-header {
+    color: #ffffff;
 }
 .jqconsole-cursor {
     background-color: #999;
@@ -94,6 +100,9 @@ code {
 .jqconsole-old-input {
     color: #bb0;
     font-weight: normal;
+}
+.jqconsole-error {
+    color: #8b4c28;
 }
 .brace {
     color: #00FFFF;

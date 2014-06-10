@@ -75,7 +75,7 @@ var actions = new (function () {
                       }
                       // Local account's userId
                       self.session.set('userId', user.id);
-                      //code info
+                      //codes info
                       self.session.set('sessionId',user.sessionId);
                       // Third-party auth type, e.g. 'facebook'
                       self.session.set('authType', authType);

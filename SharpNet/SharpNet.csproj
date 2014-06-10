@@ -106,6 +106,7 @@
     <Compile Include="Business\Repl\Abstract\IStrategy.cs" />
     <Compile Include="Business\Repl\Factory\ReplContextFactory.cs" />
     <Compile Include="Business\Repl\Provider\DefaultProvider.cs" />
+    <Compile Include="Business\Repl\Provider\SandboxPropertyProvider.cs" />
     <Compile Include="Business\Repl\ReplContext.cs" />
     <Compile Include="Business\Repl\Strategy\ActivateSessionStrategy.cs" />
     <Compile Include="Business\Repl\Strategy\DefaultActivationStrategy.cs" />
