@@ -3,7 +3,7 @@ var passport = require('passport')
   , config = geddy.config.passport
   , successRedirect = config.successRedirect
   , failureRedirect = config.failureRedirect
-  , bcrypt = require('bcrypt');
+  , bcrypt = require('bcrypt-nodejs/bCrypt');
 
 var SUPPORTED_SERVICES = [
     /*

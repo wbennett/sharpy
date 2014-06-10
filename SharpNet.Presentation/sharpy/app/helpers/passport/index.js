@@ -1,5 +1,5 @@
 var crypto = require('crypto')
-  , bcrypt = require('bcrypt');
+  , bcrypt = require('bcrypt-nodejs/bCrypt');
 
 exports.actions = require('./actions');
 
