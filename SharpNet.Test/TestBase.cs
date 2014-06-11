@@ -23,7 +23,6 @@ namespace SharpNet.Test
         [TestInitialize]
         public void SetUp()
         {
-            
         }
     }
 }
