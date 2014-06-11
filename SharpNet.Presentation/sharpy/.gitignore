@@ -5,6 +5,6 @@ node_modules
 *.DS_Store
 log/
 npm-debug.log
-config/secrets.json
+#config/secrets.json
 public/js/core/models.js
 public/js/core/helpers.js
