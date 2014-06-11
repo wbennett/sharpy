@@ -89,7 +89,7 @@ The web service is running in apphost mode, ready to accept requests.
 
 9. Do something LINQy with the collection
 
-    ![alt linq](https://github.om/wbennett/sharpy/raw/master/docs/images/linq.png)
+    ![alt linq](https://github.com/wbennett/sharpy/raw/master/docs/images/linq.png)
 
 10. Create a complex type
 
