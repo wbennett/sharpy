@@ -11,6 +11,7 @@ namespace SharpNet.Business.Repl.Strategy
         {
             //apply default activation
             entity.Session.AddReference("System.dll");
+            entity.Session.AddReference("System.Core.dll");
             entity.Session.AddReference("System.Data.dll");
             entity.Session.AddReference("System.Collections.dll");
             entity.Session.AddReference("System.Collections.Concurrent.dll");
