@@ -32,8 +32,15 @@ namespace SharpNet.Business.Repl.Strategy
                     entity.Session.AddReference(s);
                     Trace.TraceInformation(string.Format("reference added:{0}", s));
                 }
-                entity.Session.AddReference(
-                    string.Format("{0}System.Core.dll",codebase));
+
+                //find system core
+                foreach (var s in AppDomain.CurrentDomain
+                    .GetAssemblies().Where(x => x.FullName.Contains("System.Core"))
+                    )
+                {
+                   entity.Session.AddReference(s); 
+                    Trace.TraceInformation(string.Format("reference added:{0}", s));
+                }
                 /*
                 //apply default activation
                 entity.Session.AddReference(
