@@ -17,6 +17,7 @@ namespace SharpNet.Business.Repl.Strategy
             {
                 var codebase = Assembly.GetExecutingAssembly()
                     .CodeBase;
+                Trace.TraceInformation(codebase);
                 //get directory contents
                 var fs = Directory.GetFiles(codebase);
                 foreach (var s in fs)
@@ -25,25 +26,25 @@ namespace SharpNet.Business.Repl.Strategy
                 }
                 //apply default activation
                 entity.Session.AddReference(
-                    string.Format("{0}\\System.dll",codebase));
+                    string.Format("{0}System.dll",codebase));
                 entity.Session.AddReference(
-                    string.Format("{0}\\System.Core.dll"));
+                    string.Format("{0}System.Core.dll"));
                 entity.Session.AddReference(
-                    string.Format("{0}\\System.Data.dll"));
+                    string.Format("{0}System.Data.dll"));
                 entity.Session.AddReference(
-                    string.Format("{0}\\System.Collections.dll"));
+                    string.Format("{0}System.Collections.dll"));
                 entity.Session.AddReference(
-                    string.Format("{0}\\System.Collections.Concurrent.dll"));
+                    string.Format("{0}System.Collections.Concurrent.dll"));
                 entity.Session.AddReference(
-                    string.Format("{0}\\System.Linq.dll"));
+                    string.Format("{0}System.Linq.dll"));
                 entity.Session.AddReference(
-                    string.Format("{0}\\System.Runtime.Serialization.dll"));
+                    string.Format("{0}System.Runtime.Serialization.dll"));
                 entity.Session.AddReference(
-                    string.Format("{0}\\System.Xml"));
+                    string.Format("{0}System.Xml"));
                 entity.Session.AddReference(
-                    string.Format("{0}\\System.Xml.Linq"));
+                    string.Format("{0}System.Xml.Linq"));
                 entity.Session.AddReference(
-                    string.Format("{0}\\SharpNet.dll"));
+                    string.Format("{0}SharpNet.dll"));
                 entity.Session.ImportNamespace("System");
                 entity.Session.ImportNamespace("System.Collections.Generic");
                 entity.Session.ImportNamespace("System.Linq");
