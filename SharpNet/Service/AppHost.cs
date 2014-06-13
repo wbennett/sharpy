@@ -18,7 +18,6 @@ namespace SharpNet.Service
             //configure the container...
             // it is configured upon first access
             SharpNet.Container.GetInstance();
-
         }
     }
 }
