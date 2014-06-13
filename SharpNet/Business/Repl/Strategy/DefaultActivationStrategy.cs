@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using NLog;
@@ -32,6 +33,8 @@ namespace SharpNet.Business.Repl.Strategy
             }
             catch (Exception e)
             {
+                Trace.TraceError(e.Message);
+                Trace.TraceError(e.StackTrace);
                 LogManager.GetCurrentClassLogger()
                     .Error(e.Message);
                 LogManager.GetCurrentClassLogger()
