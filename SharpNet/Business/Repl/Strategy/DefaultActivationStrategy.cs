@@ -15,8 +15,8 @@ namespace SharpNet.Business.Repl.Strategy
         {
             try
             {
-                var codebase = Assembly.GetExecutingAssembly()
-                    .CodeBase;
+                var codebase = new Uri(Assembly.GetExecutingAssembly()
+                    .CodeBase).LocalPath;
                 Trace.TraceInformation(codebase);
                 //get directory contents
                 var fs = Directory.GetFiles(codebase);
