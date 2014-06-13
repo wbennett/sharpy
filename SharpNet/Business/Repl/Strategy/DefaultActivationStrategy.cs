@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using NLog;
 using SharpNet.Business.Repl.Abstract;
 using SharpNet.Service.Model;
@@ -15,8 +16,11 @@ namespace SharpNet.Business.Repl.Strategy
         {
             try
             {
-                var codebase = new Uri(Assembly.GetExecutingAssembly()
-                    .CodeBase).LocalPath;
+                var codebase = new FileInfo(new Uri(Assembly.GetExecutingAssembly()
+                    .CodeBase).LocalPath).DirectoryName;
+                codebase = codebase.EndsWith("\\")
+                    ? codebase
+                    : string.Format(@"{0}\", codebase);
                 Trace.TraceInformation(codebase);
                 //get directory contents
                 var fs = Directory.GetFiles(codebase);
@@ -28,23 +32,23 @@ namespace SharpNet.Business.Repl.Strategy
                 entity.Session.AddReference(
                     string.Format("{0}System.dll",codebase));
                 entity.Session.AddReference(
-                    string.Format("{0}System.Core.dll"));
+                    string.Format("{0}System.Core.dll",codebase));
                 entity.Session.AddReference(
-                    string.Format("{0}System.Data.dll"));
+                    string.Format("{0}System.Data.dll", codebase));
                 entity.Session.AddReference(
-                    string.Format("{0}System.Collections.dll"));
+                    string.Format("{0}System.Collections.dll", codebase));
                 entity.Session.AddReference(
-                    string.Format("{0}System.Collections.Concurrent.dll"));
+                    string.Format("{0}System.Collections.Concurrent.dll", codebase));
                 entity.Session.AddReference(
-                    string.Format("{0}System.Linq.dll"));
+                    string.Format("{0}System.Linq.dll", codebase));
                 entity.Session.AddReference(
-                    string.Format("{0}System.Runtime.Serialization.dll"));
+                    string.Format("{0}System.Runtime.Serialization.dll", codebase));
                 entity.Session.AddReference(
-                    string.Format("{0}System.Xml"));
+                    string.Format("{0}System.Xml", codebase));
                 entity.Session.AddReference(
-                    string.Format("{0}System.Xml.Linq"));
+                    string.Format("{0}System.Xml.Linq", codebase));
                 entity.Session.AddReference(
-                    string.Format("{0}SharpNet.dll"));
+                    string.Format("{0}SharpNet.dll", codebase));
                 entity.Session.ImportNamespace("System");
                 entity.Session.ImportNamespace("System.Collections.Generic");
                 entity.Session.ImportNamespace("System.Linq");
