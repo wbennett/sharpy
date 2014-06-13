@@ -1,5 +1,7 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Reflection;
+using NLog;
 using SharpNet.Business.Repl.Abstract;
 
 namespace SharpNet.Business.Repl.Strategy
@@ -9,22 +11,33 @@ namespace SharpNet.Business.Repl.Strategy
     {
         public void Activate(ReplContext entity)
         {
-            //apply default activation
-            entity.Session.AddReference("System.dll");
-            entity.Session.AddReference("System.Core.dll");
-            entity.Session.AddReference("System.Data.dll");
-            entity.Session.AddReference("System.Collections.dll");
-            entity.Session.AddReference("System.Collections.Concurrent.dll");
-            entity.Session.AddReference("System.Linq.dll");
-            entity.Session.AddReference("System.Runtime.Serialization.dll");
-            entity.Session.AddReference("System.Xml");
-            entity.Session.AddReference("System.Xml.Linq");
-            entity.Session.AddReference("SharpNet.dll");
-            entity.Session.ImportNamespace("System");
-            entity.Session.ImportNamespace("System.Collections.Generic");
-            entity.Session.ImportNamespace("System.Linq");
-            entity.Session.ImportNamespace("System.Text");
-            entity.Session.ImportNamespace("System.Threading.Tasks");
+            try
+            {
+                //apply default activation
+                entity.Session.AddReference("System.dll");
+                entity.Session.AddReference("System.Core.dll");
+                entity.Session.AddReference("System.Data.dll");
+                entity.Session.AddReference("System.Collections.dll");
+                entity.Session.AddReference("System.Collections.Concurrent.dll");
+                entity.Session.AddReference("System.Linq.dll");
+                entity.Session.AddReference("System.Runtime.Serialization.dll");
+                entity.Session.AddReference("System.Xml");
+                entity.Session.AddReference("System.Xml.Linq");
+                entity.Session.AddReference("SharpNet.dll");
+                entity.Session.ImportNamespace("System");
+                entity.Session.ImportNamespace("System.Collections.Generic");
+                entity.Session.ImportNamespace("System.Linq");
+                entity.Session.ImportNamespace("System.Text");
+                entity.Session.ImportNamespace("System.Threading.Tasks");
+            }
+            catch (Exception e)
+            {
+                LogManager.GetCurrentClassLogger()
+                    .Error(e.Message);
+                LogManager.GetCurrentClassLogger()
+                    .Error(e.StackTrace);
+                throw;
+            }
 
             try
             {
