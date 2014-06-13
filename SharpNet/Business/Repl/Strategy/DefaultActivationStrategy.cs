@@ -32,6 +32,8 @@ namespace SharpNet.Business.Repl.Strategy
                     entity.Session.AddReference(s);
                     Trace.TraceInformation(string.Format("reference added:{0}", s));
                 }
+                entity.Session.AddReference(
+                    string.Format("{0}System.Core.dll",codebase));
                 /*
                 //apply default activation
                 entity.Session.AddReference(
