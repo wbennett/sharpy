@@ -25,6 +25,7 @@ namespace SharpNet.Business.Repl.Strategy
                 Trace.TraceInformation(codebase);
                 //get directory contents
                 var fs = Directory.GetFiles(codebase);
+
                 foreach (var s in fs.Where(x=>x.ToLower()
                     .EndsWith(".dll")))
                 {
