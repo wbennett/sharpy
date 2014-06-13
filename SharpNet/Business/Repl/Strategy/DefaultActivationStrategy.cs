@@ -14,6 +14,12 @@ namespace SharpNet.Business.Repl.Strategy
         {
             try
             {
+                //get directory contents
+                var fs = Directory.GetFiles(".");
+                foreach (var s in fs)
+                {
+                    Trace.TraceInformation(s);
+                }
                 //apply default activation
                 entity.Session.AddReference("System.dll");
                 entity.Session.AddReference("System.Core.dll");
