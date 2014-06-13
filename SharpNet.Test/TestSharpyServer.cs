@@ -31,12 +31,14 @@ namespace SharpNet.Test
             }
         }
         [TestMethod]
+        [Ignore]
         public void TestHostExists()
         {
             AssertHostExists();
         }
 
         [TestMethod]
+        [Ignore]
         public void TestBasicScript()
         {
             var rest = new JsonServiceClient(Uri);

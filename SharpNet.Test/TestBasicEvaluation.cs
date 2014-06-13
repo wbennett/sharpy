@@ -12,6 +12,7 @@ namespace SharpNet.Test
     public class TestBasicEvaluation
     {
         [TestMethod]
+        [Ignore]
         public void TestBasicEval()
         {
             var tree = Syntax.ParseCompilationUnit(

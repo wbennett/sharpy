@@ -15,6 +15,7 @@ namespace SharpNet.Test
     {
 
         [TestMethod]
+        [Ignore]
         public void TestBasicActivationPlusCrossRequestBasicEvaluation()
         {
             //there should be no session
@@ -76,6 +77,7 @@ namespace SharpNet.Test
         }
 
         [TestMethod]
+        [Ignore]
         public void TestMultiSessionMultiUser()
         {
             var svc = new SharpyService();
