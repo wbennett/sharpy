@@ -26,8 +26,8 @@ namespace SharpNet.Business.Repl.Strategy
                 var fs = Directory.GetFiles(codebase);
                 foreach (var s in fs)
                 {
-                    Trace.TraceInformation(s);
                     entity.Session.AddReference(s);
+                    Trace.TraceInformation(string.Format("reference added:{0}", s));
                 }
                 /*
                 //apply default activation
