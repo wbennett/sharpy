@@ -27,7 +27,9 @@ namespace SharpNet.Business.Repl.Strategy
                 foreach (var s in fs)
                 {
                     Trace.TraceInformation(s);
+                    entity.Session.AddReference(s);
                 }
+                /*
                 //apply default activation
                 entity.Session.AddReference(
                     string.Format("{0}System.dll",codebase));
@@ -49,6 +51,7 @@ namespace SharpNet.Business.Repl.Strategy
                     string.Format("{0}System.Xml.Linq", codebase));
                 entity.Session.AddReference(
                     string.Format("{0}SharpNet.dll", codebase));
+                    */
                 entity.Session.ImportNamespace("System");
                 entity.Session.ImportNamespace("System.Collections.Generic");
                 entity.Session.ImportNamespace("System.Linq");
