@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using NLog;
@@ -24,7 +25,8 @@ namespace SharpNet.Business.Repl.Strategy
                 Trace.TraceInformation(codebase);
                 //get directory contents
                 var fs = Directory.GetFiles(codebase);
-                foreach (var s in fs)
+                foreach (var s in fs.Where(x=>x.ToLower()
+                    .EndsWith(".dll")))
                 {
                     entity.Session.AddReference(s);
                     Trace.TraceInformation(string.Format("reference added:{0}", s));
