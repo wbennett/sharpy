@@ -41,29 +41,6 @@ namespace SharpNet.Business.Repl.Strategy
                    entity.Session.AddReference(s); 
                     Trace.TraceInformation(string.Format("reference added:{0}", s));
                 }
-                /*
-                //apply default activation
-                entity.Session.AddReference(
-                    string.Format("{0}System.dll",codebase));
-                entity.Session.AddReference(
-                    string.Format("{0}System.Core.dll",codebase));
-                entity.Session.AddReference(
-                    string.Format("{0}System.Data.dll", codebase));
-                entity.Session.AddReference(
-                    string.Format("{0}System.Collections.dll", codebase));
-                entity.Session.AddReference(
-                    string.Format("{0}System.Collections.Concurrent.dll", codebase));
-                entity.Session.AddReference(
-                    string.Format("{0}System.Linq.dll", codebase));
-                entity.Session.AddReference(
-                    string.Format("{0}System.Runtime.Serialization.dll", codebase));
-                entity.Session.AddReference(
-                    string.Format("{0}System.Xml", codebase));
-                entity.Session.AddReference(
-                    string.Format("{0}System.Xml.Linq", codebase));
-                entity.Session.AddReference(
-                    string.Format("{0}SharpNet.dll", codebase));
-                    */
                 entity.Session.ImportNamespace("System");
                 entity.Session.ImportNamespace("System.Collections.Generic");
                 entity.Session.ImportNamespace("System.Linq");

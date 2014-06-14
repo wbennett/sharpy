@@ -6,7 +6,7 @@ var passport = require('../helpers/passport')
 var client = new Client();
 
 var Code = function () {
-    this.before(requireAuth);
+    //this.before(requireAuth);
     this.respondsWith = ['html', 'json', 'xml', 'js', 'txt'];
 
     this.index = function (req, resp, params) {
@@ -15,7 +15,7 @@ var Code = function () {
         var data = {
             sessionId: s
         };
-        if (s != null)
+        if (s)
         {
             this.respond({params: params, data: data});
         }else{
