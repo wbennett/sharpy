@@ -57,48 +57,33 @@ The web service is running in apphost mode, ready to accept requests.
 ####(after execution service and web application are running)
 1. Go to http://localhost:4000/
 
-     ![alt launch instance](https://github.com/wbennett/sharpy/raw/master/docs/images/launch.png)
-
-2. Create a user (**yes it supports multiple users simultaneously**!)
-
-     ![alt create](https://github.com/wbennett/sharpy/raw/master/docs/images/create.png)
-
-3. Login in with user
-
-    ![alt login](https://github.com/wbennett/sharpy/raw/master/docs/images/login.png)
-
-4. Use the help to show some more features
+2. Use the help to show some more features
 
     ![alt help](https://github.com/wbennett/sharpy/raw/master/docs/images/help.png)
 
-5. Assign variables
+3. Assign variables
 
     ![alt assign](https://github.com/wbennett/sharpy/raw/master/docs/images/assign.png)
 
-6. Offend the compiler
+4. Offend the compiler
 
     ![alt offend](https://github.com/wbennett/sharpy/raw/master/docs/images/offend.png)
 
-7. Try doing something silly
+5. Try doing something silly
 
     ![alt silly](https://github.com/wbennett/sharpy/raw/master/docs/images/silly.png)
 
-8. Create an arbitrary collection
+6. Create an arbitrary collection
 
     ![alt collection](https://github.com/wbennett/sharpy/raw/master/docs/images/collection.png)
 
-9. Do something LINQy with the collection
+7. Do something LINQy with the collection
 
     ![alt linq](https://github.com/wbennett/sharpy/raw/master/docs/images/linq.png)
 
-10. Create a complex type
+8. Create a complex type
 
     ![alt complex](https://github.com/wbennett/sharpy/raw/master/docs/images/complex.png)
-
-11. Logout
-
-    ![alt logout](https://github.com/wbennett/sharpy/raw/master/docs/images/logout.png)
-
 
     
 
