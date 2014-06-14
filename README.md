@@ -3,6 +3,14 @@ sharpy
 
 A web-based (r)ead (e)val (p)rint (l)oop (REPL) for the C# language. This tool was created for evaluating LINQ queries/closures on arbitrary data sets, and playing with Roslyn is fun.
 
+See it in action!
+----------------
+
+To try it out: [sharpy.herokuapp.com](http://sharpy.herokuapp.com/codes)
+
+To use the API for your own purposes: [sharpy.apphb.com](http://sharpy.apphb.com/metadata)
+
+
 Requirements
 ------------
 
