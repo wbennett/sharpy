@@ -1,0 +1,24 @@
+{
+  "name": "sharpy",
+  "version": "0.0.1",
+  "author": "William Bennett",
+  "private" : true,
+  "scripts" : {
+      "start" : "node SharpNet.Presentation/sharpy/app.js"
+  }
+  "dependencies": {
+    "geddy":"0.12.10",
+    "jake": "0.5.x",
+    "passport": "0.1.x",
+    "passport-twitter": "0.1.x",
+    "passport-facebook": "0.1.x",
+    "passport-yammer": "0.1.x",
+    "bcrypt-nodejs": "0.0.3",
+    "node-rest-client": "0.8.x"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": "0.10.12",
+    "npm":"1.2.30"
+  }
+}
