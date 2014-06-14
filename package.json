@@ -5,7 +5,7 @@
   "private" : true,
   "scripts" : {
       "start" : "node SharpNet.Presentation/sharpy/app.js"
-  }
+  },
   "dependencies": {
     "geddy":"0.12.10",
     "jake": "0.5.x",
